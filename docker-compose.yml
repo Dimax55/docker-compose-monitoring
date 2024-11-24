@@ -36,5 +36,15 @@ services:
     ports:
       - "3000:3000"
 
-volumes:
-  prometheus_data:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "80:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: always
+
+  volumes:
+    grafana_data:
+    jenkins_home:
